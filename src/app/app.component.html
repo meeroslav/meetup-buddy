@@ -7,17 +7,20 @@
       <mat-expansion-panel-header>
         Meetup data
       </mat-expansion-panel-header>
-        <form [formGroup]="form" (ngSubmit)="submit()">
-          Some text
-          <pre>{{ form.value | json }}</pre>
-          <!--      <mat-form-field>-->
-          <!--        <input matNativeControl placeholder="First name">-->
-          <!--      </mat-form-field>-->
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        Some text
+        <pre>{{ form.value | json }}</pre>
+        <mat-form-field>
+          <input matInput placeholder="Location" formControlName="location">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Date" formControlName="date">
+        </mat-form-field>
 
-          <!--      <mat-form-field>-->
-          <!--        <input matNativeControl placeholder="Age">-->
-          <!--      </mat-form-field>-->
-        </form>
+        <!--      <mat-form-field>-->
+        <!--        <input matNativeControl placeholder="Age">-->
+        <!--      </mat-form-field>-->
+      </form>
     </mat-expansion-panel>
   </mat-accordion>
 </main>

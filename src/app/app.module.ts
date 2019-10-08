@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatExpansionModule, MatFormFieldModule } from '@angular/material';
+import { MatToolbarModule, MatExpansionModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { MatToolbarModule, MatExpansionModule, MatFormFieldModule } from '@angul
     BrowserModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
+    MatInputModule,
     MatToolbarModule,
     MatExpansionModule,
     MatFormFieldModule
