@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     })));
   }
 
+  // https://stackoverflow.com/questions/51214548/angular-5-with-canvas-drawimage-not-showing-up
+
   submit() {
     console.log(this.form.value);
 
