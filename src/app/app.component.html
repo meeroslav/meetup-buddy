@@ -7,7 +7,7 @@
       <mat-expansion-panel-header>
         Meetup data
       </mat-expansion-panel-header>
-      <button mat-raised-button color="primary" (click)="preFillForAngularVienna()">
+      <button mat-raised-button color="warn" (click)="preFillForAngularVienna()" type="button">
         <mat-icon>change_history</mat-icon>
         Pre-fill for Angular Vienna
       </button>
@@ -18,12 +18,24 @@
           <input matInput placeholder="Location" formControlName="location">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Date" formControlName="date">
+          <input matInput [matDatepicker]="datePicker" placeholder="Date" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
         </mat-form-field>
-
-        <!--      <mat-form-field>-->
-        <!--        <input matNativeControl placeholder="Age">-->
-        <!--      </mat-form-field>-->
+        <mat-form-field>
+          <input matInput placeholder="Headline" formControlName="eventHeadline">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Background Url" formControlName="backgroundUrl">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Logo Url" formControlName="logoUrl">
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="primary" (click)="submit()">
+          <mat-icon>format_paint</mat-icon>
+          Generate
+        </button>
       </form>
     </mat-expansion-panel>
   </mat-accordion>

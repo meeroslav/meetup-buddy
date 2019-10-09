@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { preset } from './presets/angular-vienna';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+// @ts-ignore
 import dateFormat from 'dateformat';
+import { preset } from './presets/angular-vienna';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,18 @@ import dateFormat from 'dateformat';
 export class AppComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder) {
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
       location: ['', Validators.required],
       date: [new Date(), Validators.required],
-      backgroundUrl: ['', Validators.required],
+      backgroundUrl: [''],
       logoUrl: [''],
-      eventHeadline: ['', Validators.required],
+      eventHeadline: [''],
       sponsors: this.fb.array([]),
-      speakers: this.fb.array([]),
+      speakers: this.fb.array([], Validators.required),
       partners: this.fb.array([])
     });
   }
@@ -31,9 +33,10 @@ export class AppComponent implements OnInit {
     this.form.controls.backgroundUrl.setValue(preset.backgroundUrl);
     this.form.controls.logoUrl.setValue(preset.logoUrl);
     this.form.controls.eventHeadline.setValue(preset.eventHeadline);
-    this.form.controls.partners.setValue(preset.partners.map(partner => this.fb.group({
-      logoUrl: [partner.logoUrl, Validators.required]
-    })));
+    this.form.setControl('partner', new FormArray(preset.partners.map(partner =>
+      this.fb.group({
+        logoUrl: [partner.logoUrl, Validators.required]
+      }))));
   }
 
   // https://stackoverflow.com/questions/51214548/angular-5-with-canvas-drawimage-not-showing-up

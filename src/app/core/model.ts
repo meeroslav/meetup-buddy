@@ -1,7 +1,7 @@
 export interface EventMetadata {
-  backgroundUrl: string;
+  backgroundUrl?: string;
   logoUrl?: string;
-  eventHeadline: string;
+  eventHeadline?: string;
   speakers: SpeakerMetadata[];
   location: string;
   date: Date;
@@ -13,7 +13,6 @@ export interface SpeakerMetadata {
   name: string;
   talkTitle: string;
   imageUrl: string;
-  twitterHandle?: string;
 }
 
 export interface SponsorMetadata {
