@@ -7,6 +7,10 @@
       <mat-expansion-panel-header>
         Meetup data
       </mat-expansion-panel-header>
+      <button mat-raised-button color="primary" (click)="preFillForAngularVienna()">
+        <mat-icon>change_history</mat-icon>
+        Pre-fill for Angular Vienna
+      </button>
       <form [formGroup]="form" (ngSubmit)="submit()">
         Some text
         <pre>{{ form.value | json }}</pre>

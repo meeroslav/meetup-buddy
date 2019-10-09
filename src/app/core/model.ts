@@ -1,11 +1,11 @@
 export interface EventMetadata {
   backgroundUrl: string;
-  imageUrl?: string;
+  logoUrl?: string;
   eventHeadline: string;
   speakers: SpeakerMetadata[];
   location: string;
   date: string;
-  sponsors: SponsorMetadata[];
+  sponsors?: SponsorMetadata[];
   partners?: PartnerMetadata[];
 }
 
@@ -17,9 +17,9 @@ export interface SpeakerMetadata {
 }
 
 export interface SponsorMetadata {
-  imageUrl: string;
+  logoUrl: string;
 }
 
 export interface PartnerMetadata {
-  imageUrl: string;
+  logoUrl: string;
 }
