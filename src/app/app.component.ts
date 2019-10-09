@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { preset } from './presets/angular-vienna';
+import dateFormat from 'dateformat';
 
 @Component({
   selector: 'app-root',
@@ -37,5 +38,7 @@ export class AppComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
+
+    console.log(dateFormat(this.form.value.date, DATE_FORMAT));
   }
 }
