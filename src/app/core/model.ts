@@ -4,7 +4,7 @@ export interface EventMetadata {
   eventHeadline: string;
   speakers: SpeakerMetadata[];
   location: string;
-  date: string;
+  date: Date;
   sponsors?: SponsorMetadata[];
   partners?: PartnerMetadata[];
 }

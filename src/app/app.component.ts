@@ -13,11 +13,9 @@ export class AppComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit() {
-    const now = new Date();
-
     this.form = this.fb.group({
       location: ['', Validators.required],
-      date: [`${now.getUTCMonth()}`, Validators.required],
+      date: [new Date(), Validators.required],
       backgroundUrl: ['', Validators.required],
       logoUrl: [''],
       eventHeadline: ['', Validators.required],
@@ -29,7 +27,6 @@ export class AppComponent implements OnInit {
 
   preFillForAngularVienna() {
     this.form.controls.location.setValue(preset.location);
-    this.form.controls.date.setValue(preset.date);
     this.form.controls.backgroundUrl.setValue(preset.backgroundUrl);
     this.form.controls.logoUrl.setValue(preset.logoUrl);
     this.form.controls.eventHeadline.setValue(preset.eventHeadline);

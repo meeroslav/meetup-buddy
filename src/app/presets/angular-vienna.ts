@@ -6,7 +6,7 @@ export const preset: EventMetadata =  {
   eventHeadline: 'Vienna, are you ready for more Angular awesomeness?',
   speakers: [],
   location: 'Stockwerk',
-  date: '',
+  date: null,
   partners: [
     { logoUrl: 'Anexxia' },
     { logoUrl: 'APA' },
