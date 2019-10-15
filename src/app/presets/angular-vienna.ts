@@ -1,6 +1,6 @@
-import { EventMetadata } from '../core/model';
+import { EventMetadata } from '../model/event-metadata';
 
-export const preset: EventMetadata =  {
+export const preset: EventMetadata = {
   backgroundUrl: '../assets/angular-vienna/angular-vienna-back.png',
   logoUrl: '../assets/angular-vienna/angular-vienna-logo.png',
   eventHeadline: 'Vienna, are you ready for more Angular awesomeness?',
@@ -14,5 +14,5 @@ export const preset: EventMetadata =  {
     { logoUrl: '../assets/angular-vienna/apc.png' },
     { logoUrl: '../assets/angular-vienna/lc.png' },
     { logoUrl: '../assets/angular-vienna/oebb.png' }
-    ]
+  ]
 };

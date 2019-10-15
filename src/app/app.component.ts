@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FACEBOOK_POST_HEIGHT,
+  FACEBOOK_POST_WIDTH,
+  MEETUP_FEATURE_HEIGHT,
+  MEETUP_FEATURE_WIDTH, TWITTER_POST_HEIGHT,
+  TWITTER_POST_WIDTH
+} from './constants/sizes';
 // @ts-ignore
-import dateFormat from 'dateformat';
+import { render } from './drawing/renderer';
 import { preset } from './presets/angular-vienna';
 
 @Component({
@@ -10,13 +17,15 @@ import { preset } from './presets/angular-vienna';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('canvasContainer', { static: true }) canvasContainer: ElementRef;
+
   form: FormGroup;
   // make it public so we can access it from the view
   PARTNERS = 'partners';
   SPONSORS = 'sponsors';
   SPEAKERS = 'speakers';
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -37,7 +46,20 @@ export class AppComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-    console.log(dateFormat(this.form.value.date, DATE_FORMAT));
+
+    this.canvasContainer.nativeElement.innerHtml = '';
+    // TWITTER
+    this.canvasContainer.nativeElement.append(
+      render(document.createElement('canvas'), TWITTER_POST_WIDTH, TWITTER_POST_HEIGHT, this.form.value)
+    );
+    // MEETUP
+    this.canvasContainer.nativeElement.append(
+      render(document.createElement('canvas'), MEETUP_FEATURE_WIDTH, MEETUP_FEATURE_HEIGHT, this.form.value)
+    );
+    // FACEBOOK
+    this.canvasContainer.nativeElement.append(
+      render(document.createElement('canvas'), FACEBOOK_POST_WIDTH, FACEBOOK_POST_HEIGHT, this.form.value)
+    );
   }
 
   addNewPartner() {
@@ -56,12 +78,20 @@ export class AppComponent implements OnInit {
     (this.form.controls.speakers as FormArray).push(this.fb.group({
       name: ['', Validators.required],
       talkTitle: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      imageUrl: ['https://imgur.com/MdlUjdz', Validators.required],
     }));
   }
 
   removeFormItem(arrayName: string, group: AbstractControl) {
     this.form.setControl(arrayName, new FormArray((this.form.get(arrayName) as FormArray).controls.filter(control => control !== group)));
+  }
+
+  saveImage(canvas: HTMLCanvasElement, fileName: string) {
+    const link = document.createElement('a');
+    link.setAttribute('download', fileName);
+    link.setAttribute('href', canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'));
+    link.click();
+    link.remove();
   }
 
   private initializeForm() {
