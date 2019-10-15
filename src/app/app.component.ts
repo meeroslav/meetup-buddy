@@ -45,9 +45,7 @@ export class AppComponent implements OnInit {
   // https://stackoverflow.com/questions/51214548/angular-5-with-canvas-drawimage-not-showing-up
 
   submit() {
-    console.log(this.form.value);
-
-    this.canvasContainer.nativeElement.innerHtml = '';
+    this.canvasContainer.nativeElement.innerHTML = '';
     // TWITTER
     this.canvasContainer.nativeElement.append(
       render(document.createElement('canvas'), TWITTER_POST_WIDTH, TWITTER_POST_HEIGHT, this.form.value)
@@ -86,7 +84,11 @@ export class AppComponent implements OnInit {
     this.form.setControl(arrayName, new FormArray((this.form.get(arrayName) as FormArray).controls.filter(control => control !== group)));
   }
 
-  saveImage(canvas: HTMLCanvasElement, fileName: string) {
+  saveImages() {
+    console.log(this.canvasContainer);
+  }
+
+  private saveImage(canvas: HTMLCanvasElement, fileName: string) {
     const link = document.createElement('a');
     link.setAttribute('download', fileName);
     link.setAttribute('href', canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'));
