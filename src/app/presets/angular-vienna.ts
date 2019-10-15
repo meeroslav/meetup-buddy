@@ -2,16 +2,17 @@ import { EventMetadata } from '../core/model';
 
 export const preset: EventMetadata =  {
   backgroundUrl: '../assets/angular-vienna/angular-vienna-back.png',
-  logoUrl: 'abc',
+  logoUrl: '../assets/angular-vienna/angular-vienna-logo.png',
   eventHeadline: 'Vienna, are you ready for more Angular awesomeness?',
   speakers: [],
   location: 'Stockwerk',
   date: null,
   partners: [
-    { logoUrl: 'Anexxia' },
-    { logoUrl: 'APA' },
-    { logoUrl: 'APC' },
-    { logoUrl: 'Lean coders' },
-    { logoUrl: 'OBB' }
+    { logoUrl: '../assets/angular-vienna/angular-austria-logo.png' },
+    { logoUrl: '../assets/angular-vienna/anexia.png' },
+    { logoUrl: '../assets/angular-vienna/apa.png' },
+    { logoUrl: '../assets/angular-vienna/apc.png' },
+    { logoUrl: '../assets/angular-vienna/lc.png' },
+    { logoUrl: '../assets/angular-vienna/oebb.png' }
     ]
 };
