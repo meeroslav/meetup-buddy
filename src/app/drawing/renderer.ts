@@ -2,11 +2,16 @@ import dateFormat from 'dateformat';
 import { DATE_FORMAT } from '../constants/sizes';
 import { EventMetadata } from '../model/event-metadata';
 
-export function render(canvas: HTMLCanvasElement, width: number, height: number, model: EventMetadata): HTMLCanvasElement {
+export function render(canvas: HTMLCanvasElement,
+                       width: number,
+                       height: number,
+                       model: EventMetadata,
+                       id: string = 'file'): HTMLCanvasElement {
   console.log(dateFormat(model.date, DATE_FORMAT));
 
   canvas.height = height;
   canvas.width = width;
+  canvas.id = id;
 
   drawBackground(canvas.getContext('2d'), model.backgroundUrl);
 
