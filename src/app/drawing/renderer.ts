@@ -24,11 +24,11 @@ function drawBackground(ctx: CanvasRenderingContext2D, imageUrl: string) {
     const canvasRatio = ctx.canvas.width / ctx.canvas.height;
     const imageRatio = image.width / image.height;
     if (imageRatio > canvasRatio) {
-      const delta = imageRatio * ctx.canvas.height - ctx.canvas.width;
-      ctx.drawImage(image, delta / -2, 0, ctx.canvas.width + delta / 2, ctx.canvas.height);
+      const delta = ctx.canvas.width - imageRatio * ctx.canvas.height;
+      ctx.drawImage(image, delta / 2, 0, ctx.canvas.height * imageRatio, ctx.canvas.height);
     } else {
-      const delta = imageRatio * ctx.canvas.width - ctx.canvas.height;
-      ctx.drawImage(image, 0, delta / -2, ctx.canvas.width, ctx.canvas.height + delta / 2);
+      const delta = ctx.canvas.height - ctx.canvas.width / imageRatio;
+      ctx.drawImage(image, 0, delta / 2, ctx.canvas.width, ctx.canvas.width / imageRatio);
     }
   };
   image.src = imageUrl;
