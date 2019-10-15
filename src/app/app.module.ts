@@ -10,7 +10,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatDividerModule, MatIconModule, MatDatepickerModule, MatNativeDateModule
+  MatDividerModule, MatIconModule, MatDatepickerModule, MatNativeDateModule, MatListModule
 } from '@angular/material';
 
 @NgModule({
@@ -27,6 +27,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatListModule,
     MatToolbarModule,
     MatExpansionModule,
     MatFormFieldModule

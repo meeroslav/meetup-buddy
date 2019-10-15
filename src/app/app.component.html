@@ -7,13 +7,13 @@
       <mat-expansion-panel-header>
         Meetup data
       </mat-expansion-panel-header>
-      <button mat-raised-button color="warn" (click)="preFillForAngularVienna()" type="button">
-        <mat-icon>change_history</mat-icon>
-        Pre-fill for Angular Vienna
-      </button>
+      <mat-toolbar>
+        <button mat-raised-button color="warn" (click)="preFillForAngularVienna()" type="button">
+          <mat-icon>change_history</mat-icon>
+          Pre-fill for Angular Vienna
+        </button>
+      </mat-toolbar>
       <form [formGroup]="form" (ngSubmit)="submit()">
-        Some text
-        <pre>{{ form.value | json }}</pre>
         <mat-form-field>
           <input matInput placeholder="Location" formControlName="location">
         </mat-form-field>
@@ -31,7 +31,75 @@
         <mat-form-field>
           <input matInput placeholder="Logo Url" formControlName="logoUrl">
         </mat-form-field>
+
         <mat-divider></mat-divider>
+
+        <h3>
+          Speakers
+          <button mat-raised-button (click)="addNewSpeaker()" type="button">
+            <mat-icon>add</mat-icon>
+            Add speaker
+          </button>
+        </h3>
+        <mat-list [formArrayName]="SPEAKERS">
+          <mat-list-item *ngFor="let speaker of form.get(SPEAKERS).controls; let i = index">
+            <ng-container [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="Name" formControlName="name">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Talk Title" formControlName="talkTitle">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Image Url" formControlName="imageUrl">
+              </mat-form-field>
+            </ng-container>
+            <button mat-icon-button (click)="removeFormItem(SPEAKERS, speaker)" type="button">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+        <h3>Sponsors
+          <button mat-raised-button (click)="addNewSponsor()" type="button">
+            <mat-icon>add</mat-icon>
+            Add sponsor
+          </button>
+        </h3>
+        <mat-list [formArrayName]="SPONSORS">
+          <mat-list-item *ngFor="let sponsor of form.get(SPONSORS).controls; let i = index">
+            <ng-container [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="Logo Url" formControlName="logoUrl">
+              </mat-form-field>
+            </ng-container>
+            <button mat-icon-button (click)="removeFormItem(SPONSORS, sponsor)" type="button">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+        <h3>Partners
+          <button mat-raised-button (click)="addNewPartner()" type="button">
+            <mat-icon>add</mat-icon>
+            Add partner
+          </button>
+        </h3>
+        <mat-list [formArrayName]="PARTNERS">
+          <mat-list-item *ngFor="let partner of form.get(PARTNERS).controls; let i = index">
+            <ng-container [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="Logo Url" formControlName="logoUrl">
+              </mat-form-field>
+            </ng-container>
+            <button mat-icon-button (click)="removeFormItem(PARTNERS, partner)" type="button">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+        <mat-divider></mat-divider>
+
         <button mat-raised-button color="primary" (click)="submit()">
           <mat-icon>format_paint</mat-icon>
           Generate
