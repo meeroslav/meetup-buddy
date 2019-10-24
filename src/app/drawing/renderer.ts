@@ -5,7 +5,7 @@ import { EventMetadata } from '../model/event-metadata';
 export function render(width: number,
                        height: number,
                        model: EventMetadata,
-                       id: string = 'file'): HTMLCanvasElement {
+                       id: string = 'file'): HTMLCanvasElement[] {
   const canvas = document.createElement('canvas');
 
   console.log(dateFormat(model.date, DATE_FORMAT));
@@ -16,7 +16,7 @@ export function render(width: number,
 
   drawBackground(canvas.getContext('2d'), model.backgroundUrl);
 
-  return canvas;
+  return [canvas];
 }
 
 function drawBackground(ctx: CanvasRenderingContext2D, imageUrl: string) {

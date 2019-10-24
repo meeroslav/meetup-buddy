@@ -46,15 +46,15 @@ export class AppComponent implements OnInit {
     this.canvasContainer.nativeElement.innerHTML = '';
     // TWITTER
     this.canvasContainer.nativeElement.append(
-      render(TWITTER_POST_WIDTH, TWITTER_POST_HEIGHT, this.form.value, 'twitter')
+      ...render(TWITTER_POST_WIDTH, TWITTER_POST_HEIGHT, this.form.value, 'twitter')
     );
     // MEETUP
     this.canvasContainer.nativeElement.append(
-      render(MEETUP_FEATURE_WIDTH, MEETUP_FEATURE_HEIGHT, this.form.value, 'meetup')
+      ...render(MEETUP_FEATURE_WIDTH, MEETUP_FEATURE_HEIGHT, this.form.value, 'meetup')
     );
     // FACEBOOK
     this.canvasContainer.nativeElement.append(
-      render(FACEBOOK_POST_WIDTH, FACEBOOK_POST_HEIGHT, this.form.value, 'facebook')
+      ...render(FACEBOOK_POST_WIDTH, FACEBOOK_POST_HEIGHT, this.form.value, 'facebook')
     );
   }
 
